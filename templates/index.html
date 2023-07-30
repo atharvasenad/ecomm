@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+<div class="row ">
+    <div class="col-md-3 mt-4 bg-body-secondary p-3">
+        <h5>Filter by category</h5>
+        <hr>
+        <p><a href="/products" class="anchor">All</p></a>
+        <p><a href="/catfilter/1" class="anchor">Buy Mobile</p></a>
+        <p><a href="#" class="anchor">Buy Cloths</p></a>
+        <p><a href="/catfilter/2" class="anchor">Buy Shoes</p></a>
+        
+        <h5>Filter by price</h5>
+        <hr>
+        <form method="GET" action="/pricefilter">
+        <div class="mb-3">
+          <label for="input1" class="form-label"><strong>Min:</strong></label>
+          <input type="text" class="form-control" id="input1" name=min placeholder="min">
+        </div>
+        <div class="mb-3">
+          <label for="input2" class="form-label"><strong>Max:</strong></label>
+          <input type="text" class="form-control" id="input2" name=max placeholder="max">
+        </div>
+        <div class="mb-2 mt-3 p-3">
+          <input type="submit" class="btn btn-danger" value="Search">
+        </div>
+        </form>
+        <h5>Sort by Price</h5><hr>
+        <p><a href="/sort/1" value="anchor">High to Low</a></p>
+        <p><a href="/sort/0" value="anchor">Low to High</a></p>
+    </div><!--End of left side-->
+    <div class="col-md-9 mt-4 bg-body-secondary p-3">
+      <div class="row">
+        {% for x in data %}
+        <div class="col-md-3">
+          <div class="card" style="width: 100%;">
+            <img src="{{x.pimage.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{x.name}}</h5>
+              <p class="card-text">Rs-{{x.price}}</p>
+              <p class="card-text">{{x.pdetails}}</p>
+              <a href="/product_detail/{{x.id}}" class="btn btn-danger">See details</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock 'main' %}

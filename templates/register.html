@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .box{
+            border-style: solid;
+            height: 200px;
+        }
+    </style>
+    <title>Ekart|register</title>
+</head>
+<body><br><br><br>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-4 mt-5  mx-auto shadow p-4">
+                <h3 class="mb-4 text-center">User Registration</h3>
+                {% if errmsg %}
+                <div class="alert alert-warning" role="alert">
+                    {{errmsg}}
+                </div>
+                {% endif %}
+                {% if success %}
+                <div class="alert alert-warning" role="alert">
+                    {{success}}
+                </div>
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="input1" class="form-label"><strong>User Name:</strong></label>
+                        <input type="email" class="form-control" id="input1" name=uname placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="input2" class="form-label"><strong>Enter Password:</strong></label>
+                        <input type="password" class="form-control" id="input2" name=upass placeholder="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="input3" class="form-label"><strong>Confirm Password:</strong></label>
+                        <input type="password" class="form-control" id="input3" name=ucpass placeholder=" confirm password">
+                    </div>
+                    <div class="mb-3">
+                        <input type="submit" class="btn btn-danger" value="register">Already User?&nbsp;&nbsp;&nbsp;<a href="/login" style="text-decoration: none;">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+</body>
+</html>

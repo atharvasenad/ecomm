@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+</head>
+<body>
+    <h3>Order Incoice</h3>
+    <h4>Customer Name:{{x.userid.username}}</h4>
+    <h4>Customer Email-ID:{{x.userid.email}}</h4>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in products %}
+            <tr>
+                <td><strong>Price Per Quantity: </strong>Rs. {{x.pid.price}}</td>
+                <td><strong>Quantity: </strong>{{x.qty}}</td>
+                <td><strong>Total Amount: </strong>Rs.{{x.amt}}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+</body>
+</html>
